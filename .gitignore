@@ -1,0 +1,6 @@
+./RT-DETR_v2/dataset/train/
+./RT-DETR_v2/dataset/valid/
+./RT-DETR_v2/dataset/test/
+./RT-DETR_v2/dataset/padi.v1i.coco.zip
+RT-DETR_v2/output/best.pth
+RT-DETR_v2/rtdetrv2_r18vd_120e_coco_rerun_48.1.pth

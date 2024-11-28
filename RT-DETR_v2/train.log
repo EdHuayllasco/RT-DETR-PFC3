@@ -1,0 +1,133 @@
+W1128 02:29:08.276000 140428671824320 torch/distributed/run.py:757] 
+W1128 02:29:08.276000 140428671824320 torch/distributed/run.py:757] *****************************************
+W1128 02:29:08.276000 140428671824320 torch/distributed/run.py:757] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1128 02:29:08.276000 140428671824320 torch/distributed/run.py:757] *****************************************
+Not init distributed mode.Not init distributed mode.Not init distributed mode.Not init distributed mode.
+
+
+
+cfg:  {'task': 'detection', '_model': None, '_postprocessor': None, '_criterion': None, '_optimizer': None, '_lr_scheduler': None, '_lr_warmup_scheduler': None, '_train_dataloader': None, '_val_dataloader': None, '_ema': None, '_scaler': None, '_train_dataset': None, '_val_dataset': None, '_collate_fn': None, '_evaluator': None, '_writer': None, 'num_workers': 0, 'batch_size': None, '_train_batch_size': None, '_val_batch_size': None, '_train_shuffle': None, '_val_shuffle': None, 'resume': 'rtdetrv2_r18vd_120e_coco_rerun_48.1.pth', 'tuning': None, 'epoches': 120, 'last_epoch': -1, 'use_amp': False, 'use_ema': True, 'ema_decay': 0.9999, 'ema_warmups': 2000, 'sync_bn': True, 'clip_max_norm': 0.1, 'find_unused_parameters': False, 'seed': None, 'print_freq': 100, 'checkpoint_freq': 1, 'output_dir': './output/rtdetrv2_r18vd_120e_coco', 'summary_dir': None, 'device': '', 'yaml_cfg': {'task': 'detection', 'evaluator': {'type': 'CocoEvaluator', 'iou_types': ['bbox']}, 'num_classes': 4, 'remap_mscoco_category': True, 'train_dataloader': {'type': 'DataLoader', 'dataset': {'type': 'CocoDetection', 'img_folder': './dataset/train/', 'ann_file': './dataset/train/_annotations.coco.json', 'return_masks': False, 'transforms': {'type': 'Compose', 'ops': [{'type': 'RandomPhotometricDistort', 'p': 0.5}, {'type': 'RandomZoomOut', 'fill': 0}, {'type': 'RandomIoUCrop', 'p': 0.8}, {'type': 'SanitizeBoundingBoxes', 'min_size': 1}, {'type': 'RandomHorizontalFlip'}, {'type': 'Resize', 'size': [640, 640]}, {'type': 'SanitizeBoundingBoxes', 'min_size': 1}, {'type': 'ConvertPILImage', 'dtype': 'float32', 'scale': True}, {'type': 'ConvertBoxes', 'fmt': 'cxcywh', 'normalize': True}], 'policy': {'name': 'stop_epoch', 'epoch': 117, 'ops': ['RandomPhotometricDistort', 'RandomZoomOut', 'RandomIoUCrop']}}}, 'shuffle': True, 'num_workers': 4, 'drop_last': True, 'collate_fn': {'type': 'BatchImageCollateFuncion', 'scales': None, 'stop_epoch': 71}, 'total_batch_size': 20}, 'val_dataloader': {'type': 'DataLoader', 'dataset': {'type': 'CocoDetection', 'img_folder': './dataset/valid/', 'ann_file': './dataset/valid/_annotations.coco.json', 'return_masks': False, 'transforms': {'type': 'Compose', 'ops': [{'type': 'Resize', 'size': [640, 640]}, {'type': 'ConvertPILImage', 'dtype': 'float32', 'scale': True}]}}, 'shuffle': False, 'num_workers': 4, 'drop_last': False, 'collate_fn': {'type': 'BatchImageCollateFuncion'}, 'total_batch_size': 16}, 'print_freq': 100, 'output_dir': './output/rtdetrv2_r18vd_120e_coco', 'checkpoint_freq': 1, 'sync_bn': True, 'find_unused_parameters': False, 'use_amp': False, 'scaler': {'type': 'GradScaler', 'enabled': True}, 'use_ema': True, 'ema': {'type': 'ModelEMA', 'decay': 0.9999, 'warmups': 2000}, 'epoches': 120, 'clip_max_norm': 0.1, 'optimizer': {'type': 'AdamW', 'params': [{'params': '^(?=.*(?:norm|bn)).*$', 'weight_decay': 0.0}], 'lr': 0.0001, 'betas': [0.9, 0.999], 'weight_decay': 0.0001}, 'lr_scheduler': {'type': 'MultiStepLR', 'milestones': [1000], 'gamma': 0.1}, 'lr_warmup_scheduler': {'type': 'LinearWarmup', 'warmup_duration': 2000}, 'model': 'RTDETR', 'criterion': 'RTDETRCriterionv2', 'postprocessor': 'RTDETRPostProcessor', 'use_focal_loss': True, 'eval_spatial_size': [640, 640], 'RTDETR': {'backbone': 'PResNet', 'encoder': 'HybridEncoder', 'decoder': 'RTDETRTransformerv2'}, 'PResNet': {'depth': 18, 'variant': 'd', 'freeze_at': -1, 'return_idx': [1, 2, 3], 'num_stages': 4, 'freeze_norm': False, 'pretrained': True}, 'HybridEncoder': {'in_channels': [128, 256, 512], 'feat_strides': [8, 16, 32], 'hidden_dim': 256, 'use_encoder_idx': [2], 'num_encoder_layers': 1, 'nhead': 8, 'dim_feedforward': 1024, 'dropout': 0.0, 'enc_act': 'gelu', 'expansion': 0.5, 'depth_mult': 1, 'act': 'silu'}, 'RTDETRTransformerv2': {'feat_channels': [256, 256, 256], 'feat_strides': [8, 16, 32], 'hidden_dim': 256, 'num_levels': 3, 'num_layers': 3, 'num_queries': 300, 'num_denoising': 100, 'label_noise_ratio': 0.5, 'box_noise_scale': 1.0, 'eval_idx': -1, 'num_points': [4, 4, 4], 'cross_attn_method': 'default', 'query_select_method': 'default'}, 'RTDETRPostProcessor': {'num_top_queries': 300}, 'RTDETRCriterionv2': {'weight_dict': {'loss_vfl': 1, 'loss_bbox': 5, 'loss_giou': 2}, 'losses': ['vfl', 'boxes'], 'alpha': 0.75, 'gamma': 2.0, 'matcher': {'type': 'HungarianMatcher', 'weight_dict': {'cost_class': 2, 'cost_bbox': 5, 'cost_giou': 2}, 'alpha': 0.25, 'gamma': 2.0}}, '__include__': ['../dataset/coco_detection.yml', '../runtime.yml', './include/dataloader.yml', './include/optimizer.yml', './include/rtdetrv2_r50vd.yml'], 'config': 'configs/rtdetrv2/rtdetrv2_r18vd_120e_coco.yml', 'resume': 'rtdetrv2_r18vd_120e_coco_rerun_48.1.pth', 'test_only': False, 'print_method': 'builtin', 'print_rank': 0}}
+Start training
+Load PResNet18 state_dict
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/pytorch/data/tools/train.py", line 65, in <module>
+[rank1]:     main(args)
+[rank1]:   File "/home/pytorch/data/tools/train.py", line 35, in main
+[rank1]:     solver.fit()
+[rank1]:   File "/home/pytorch/data/tools/../src/solver/det_solver.py", line 20, in fit
+[rank1]:     self.train()
+[rank1]:   File "/home/pytorch/data/tools/../src/solver/_solver.py", line 68, in train
+[rank1]:     self._setup()
+[rank1]:   File "/home/pytorch/data/tools/../src/solver/_solver.py", line 42, in _setup
+[rank1]:     self.model = dist_utils.warp_model(self.model.to(device), sync_bn=cfg.sync_bn, \
+[rank1]:   File "/home/pytorch/data/tools/../src/misc/dist_utils.py", line 140, in warp_model
+[rank1]:     model = DDP(model, device_ids=[rank], output_device=rank, find_unused_parameters=find_unused_parameters)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 705, in __init__
+[rank1]:     self._log_and_throw(
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1089, in _log_and_throw
+[rank1]:     raise err_type(err_msg)
+[rank1]: ValueError: DistributedDataParallel device_ids and output_device arguments only work with single-device/multiple-device GPU modules or CPU modules, but got device_ids [1], output_device 1, and module parameters {device(type='cpu')}.
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/pytorch/data/tools/train.py", line 65, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/pytorch/data/tools/train.py", line 35, in main
+[rank0]:     solver.fit()
+[rank0]:   File "/home/pytorch/data/tools/../src/solver/det_solver.py", line 20, in fit
+[rank0]:     self.train()
+[rank0]:   File "/home/pytorch/data/tools/../src/solver/_solver.py", line 68, in train
+[rank0]:     self._setup()
+[rank0]:   File "/home/pytorch/data/tools/../src/solver/_solver.py", line 42, in _setup
+[rank0]:     self.model = dist_utils.warp_model(self.model.to(device), sync_bn=cfg.sync_bn, \
+[rank0]:   File "/home/pytorch/data/tools/../src/misc/dist_utils.py", line 140, in warp_model
+[rank0]:     model = DDP(model, device_ids=[rank], output_device=rank, find_unused_parameters=find_unused_parameters)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 705, in __init__
+[rank0]:     self._log_and_throw(
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1089, in _log_and_throw
+[rank0]:     raise err_type(err_msg)
+[rank0]: ValueError: DistributedDataParallel device_ids and output_device arguments only work with single-device/multiple-device GPU modules or CPU modules, but got device_ids [0], output_device 0, and module parameters {device(type='cpu')}.
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/home/pytorch/data/tools/train.py", line 65, in <module>
+[rank3]:     main(args)
+[rank3]:   File "/home/pytorch/data/tools/train.py", line 35, in main
+[rank3]:     solver.fit()
+[rank3]:   File "/home/pytorch/data/tools/../src/solver/det_solver.py", line 20, in fit
+[rank3]:     self.train()
+[rank3]:   File "/home/pytorch/data/tools/../src/solver/_solver.py", line 68, in train
+[rank3]:     self._setup()
+[rank3]:   File "/home/pytorch/data/tools/../src/solver/_solver.py", line 42, in _setup
+[rank3]:     self.model = dist_utils.warp_model(self.model.to(device), sync_bn=cfg.sync_bn, \
+[rank3]:   File "/home/pytorch/data/tools/../src/misc/dist_utils.py", line 140, in warp_model
+[rank3]:     model = DDP(model, device_ids=[rank], output_device=rank, find_unused_parameters=find_unused_parameters)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 705, in __init__
+[rank3]:     self._log_and_throw(
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1089, in _log_and_throw
+[rank3]:     raise err_type(err_msg)
+[rank3]: ValueError: DistributedDataParallel device_ids and output_device arguments only work with single-device/multiple-device GPU modules or CPU modules, but got device_ids [3], output_device 3, and module parameters {device(type='cpu')}.
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/home/pytorch/data/tools/train.py", line 65, in <module>
+[rank2]:     main(args)
+[rank2]:   File "/home/pytorch/data/tools/train.py", line 35, in main
+[rank2]:     solver.fit()
+[rank2]:   File "/home/pytorch/data/tools/../src/solver/det_solver.py", line 20, in fit
+[rank2]:     self.train()
+[rank2]:   File "/home/pytorch/data/tools/../src/solver/_solver.py", line 68, in train
+[rank2]:     self._setup()
+[rank2]:   File "/home/pytorch/data/tools/../src/solver/_solver.py", line 42, in _setup
+[rank2]:     self.model = dist_utils.warp_model(self.model.to(device), sync_bn=cfg.sync_bn, \
+[rank2]:   File "/home/pytorch/data/tools/../src/misc/dist_utils.py", line 140, in warp_model
+[rank2]:     model = DDP(model, device_ids=[rank], output_device=rank, find_unused_parameters=find_unused_parameters)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 705, in __init__
+[rank2]:     self._log_and_throw(
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1089, in _log_and_throw
+[rank2]:     raise err_type(err_msg)
+[rank2]: ValueError: DistributedDataParallel device_ids and output_device arguments only work with single-device/multiple-device GPU modules or CPU modules, but got device_ids [2], output_device 2, and module parameters {device(type='cpu')}.
+E1128 02:29:13.393000 140428671824320 torch/distributed/elastic/multiprocessing/api.py:881] failed (exitcode: 1) local_rank: 0 (pid: 18132) of binary: /usr/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+tools/train.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2024-11-28_02:29:13
+  host      : 167129d17a06
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 18133)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2024-11-28_02:29:13
+  host      : 167129d17a06
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 18134)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2024-11-28_02:29:13
+  host      : 167129d17a06
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 18135)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-11-28_02:29:13
+  host      : 167129d17a06
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 18132)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

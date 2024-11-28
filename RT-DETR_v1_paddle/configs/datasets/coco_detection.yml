@@ -1,0 +1,21 @@
+metric: COCO
+num_classes: 3 # 1 clase persona
+
+TrainDataset:
+  name: COCODataSet
+  image_dir: JPEGImages
+  anno_path: _annotations.coco.json
+  dataset_dir: dataset/camu_camu/train
+  data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
+
+EvalDataset:
+  name: COCODataSet
+  image_dir: blast
+  anno_path: _annotations.coco.json
+  dataset_dir: dataset/arroz_class/test/
+  allow_empty: true
+
+TestDataset:
+  name: ImageFolder
+  anno_path: _annotations.coco.json # also support txt (like VOC's label_list.txt)
+  dataset_dir: dataset/personas # if set, anno_path will be 'dataset_dir/anno_path'
